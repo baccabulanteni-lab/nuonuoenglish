@@ -1,17 +1,22 @@
 ---
-
+import App from '../App';
+import '../index.css';
 ---
 
-<html lang="en">
+<html lang="zh-CN">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>糯糯专升本英语</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<App client:only="react" />
 	</body>
 </html>
+
+<style is:global>
+  @import "tailwindcss";
+</style>
