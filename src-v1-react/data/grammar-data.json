@@ -1,0 +1,812 @@
+{
+  "categories": [
+    {
+      "id": "cat1",
+      "name": "词类",
+      "subItems": [
+        "名词",
+        "动词",
+        "形容词",
+        "副词",
+        "代词",
+        "数词",
+        "介词",
+        "连词",
+        "冠词",
+        "感叹词"
+      ]
+    },
+    {
+      "id": "cat2",
+      "name": "构词法",
+      "subItems": [
+        "合成法",
+        "派生法",
+        "转化法",
+        "缩写",
+        "简写"
+      ]
+    },
+    {
+      "id": "cat3",
+      "name": "句子种类",
+      "subItems": [
+        "陈述句",
+        "疑问句",
+        "祈使句",
+        "感叹句"
+      ]
+    },
+    {
+      "id": "cat4",
+      "name": "英语五大基本句型",
+      "subItems": [
+        "主谓宾",
+        "主谓",
+        "主谓双宾",
+        "主谓宾宾补",
+        "主系表"
+      ]
+    },
+    {
+      "id": "cat6",
+      "name": "时态",
+      "subItems": [
+        "一般现在时",
+        "一般过去时",
+        "一般将来时",
+        "现在进行时",
+        "过去进行时",
+        "将来进行时",
+        "现在完成时",
+        "过去完成时",
+        "将来完成时",
+        "过去将来时",
+        "现在完成进行时"
+      ]
+    },
+    {
+      "id": "cat7",
+      "name": "被动语态",
+      "subItems": [
+        "基础被动",
+        "特殊被动"
+      ]
+    },
+    {
+      "id": "cat8",
+      "name": "动词的非谓语形式",
+      "subItems": [
+        "动词不定式",
+        "动词的-ing形式",
+        "动词的-ed形式"
+      ]
+    },
+    {
+      "id": "cat9",
+      "name": "主谓一致",
+      "subItems": [
+        "语法一致",
+        "意义一致",
+        "就近原则"
+      ]
+    },
+    {
+      "id": "cat10",
+      "name": "并列复合句",
+      "subItems": [
+        "并列",
+        "转折",
+        "选择",
+        "因果"
+      ]
+    },
+    {
+      "id": "cat11",
+      "name": "主从复合句",
+      "subItems": [
+        "宾语从句",
+        "状语从句",
+        "定语从句",
+        "主语从句",
+        "表语从句",
+        "同位语从句"
+      ]
+    },
+    {
+      "id": "cat12",
+      "name": "省略",
+      "subItems": [
+        "主语省略",
+        "谓语省略",
+        "状语从句省略"
+      ]
+    },
+    {
+      "id": "cat13",
+      "name": "倒装",
+      "subItems": [
+        "全部倒装",
+        "部分倒装"
+      ]
+    },
+    {
+      "id": "cat14",
+      "name": "强调",
+      "subItems": [
+        "强调句型It is...that..."
+      ]
+    },
+    {
+      "id": "cat15",
+      "name": "虚拟语气",
+      "subItems": [
+        "If条件句",
+        "建议要求动词虚拟"
+      ]
+    }
+  ],
+  "knowledgePoints": {
+    "cat1": {
+      "id": "cat1",
+      "title": "词类",
+      "enTitle": "Parts of Speech",
+      "coreConcept": "英语词汇根据其在句子中的功能分为十类。掌握词类是理解句意和进行句法分析的基础。",
+      "formula": [
+        {
+          "label": "名词 vs 动词",
+          "items": [
+            {
+              "condition": "名词",
+              "structure": "表示人或物"
+            },
+            {
+              "condition": "动词",
+              "structure": "表示动作或状态"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "en": "Success requires effort.",
+          "cn": "成功需要努力。",
+          "tips": "Success是名词，require是动词。"
+        }
+      ]
+    },
+    "cat2": {
+      "id": "cat2",
+      "title": "构词法",
+      "enTitle": "Word Formation",
+      "coreConcept": "通过词缀、合成等方式扩展词汇的方法。",
+      "formula": [],
+      "examples": []
+    },
+    "cat3": {
+      "id": "cat3",
+      "title": "句子种类",
+      "enTitle": "Sentence Types",
+      "coreConcept": "按用途分为陈述、疑问、祈使、感叹句。",
+      "formula": [],
+      "examples": []
+    },
+    "cat4": {
+      "id": "cat4",
+      "title": "英语五大基本句型",
+      "enTitle": "Five Basic Sentence Patterns",
+      "coreConcept": "英语的所有句子，无论长短、结构复杂与否，都由五大基本句型演变而来。掌握五大基本句型，是看懂长难句、写对正确句子的核心基础。",
+      "formula": [
+        {
+          "label": "句型一：主谓宾 (S+V+O)",
+          "items": [
+            {
+              "condition": "结构",
+              "structure": "Subject + Verb(vt.) + Object"
+            }
+          ]
+        },
+        {
+          "label": "句型二：主谓 (S+V)",
+          "items": [
+            {
+              "condition": "结构",
+              "structure": "Subject + Verb(vi.)"
+            }
+          ]
+        },
+        {
+          "label": "句型三：主谓双宾 (S+V+IO+DO)",
+          "items": [
+            {
+              "condition": "结构",
+              "structure": "Subject + Verb + Indirect Object + Direct Object"
+            }
+          ]
+        },
+        {
+          "label": "句型四：主谓宾宾补 (S+V+O+OC)",
+          "items": [
+            {
+              "condition": "结构",
+              "structure": "Subject + Verb + Object + Object Complement"
+            }
+          ]
+        },
+        {
+          "label": "句型五：主系表 (S+L+P)",
+          "items": [
+            {
+              "condition": "结构",
+              "structure": "Subject + Linking Verb + Predicative"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "en": "I love English.",
+          "cn": "我爱英语。",
+          "tips": "主谓宾..."
+        },
+        {
+          "en": "Birds fly.",
+          "cn": "鸟儿飞翔。",
+          "tips": "主谓结构。"
+        }
+      ],
+      "content": "一、英语句子核心总述\n英语的所有句子，无论长短、结构复杂与否，都由五大基本句型演变而来。掌握五大基本句型，是看懂长难句、写对正确句子的核心基础。\n句子的核心成分包括：主语、谓语、宾语、定语、状语、补语、表语，其中主语和谓语是所有句子的必备核心成分。\n\n二、五大基本句型详解\n句型一：主语 + 谓语 + 宾语（主谓宾，S+V+O）\n1. 核心成分定义\n•\t主语：句子描述的主体，是动作的发出者，一般位于句首。\n可由名词、代词、动名词(doing)、不定式(to do)、从句充当。\n•\t谓语：句子的动作本身，一般位于主语之后，该句型中必须由及物动词(vt.) 充当。\n•\t宾语：动作的承受对象，是动作作用的对象，一般位于及物动词或介词之后。\n可由名词、代词、动名词(doing)、不定式(to do)、从句充当。\n2. 专升本高频及物动词（必须加宾语，可直接接宾语）\nhave（拥有、吃）、visit（参观、拜访）、do（做）、spend（花费、度过）、pass（通过、传递）、love（爱）、say（说）、see（看见）、buy（买）、take（拿、花费）、finish（完成）、keep（保持）等。\n3. 高频固定搭配\n•\thave breakfast/lunch/dinner 吃早/午/晚餐\n•\tvisit sb. 拜访某人；visit sp. 参观某地\n•\tspend time/money on sth. 花费时间/金钱在某事上\n•\tspend time/money (in) doing sth. 花费时间/金钱做某事\n•\tpass the exam 通过考试；pass the ball to me 把球传给我\n\n句型二：主语 + 谓语（主谓，S+V）\n1. 核心定义\n该句型中的谓语动词是不及物动词(vi.)，动词本身意思完整，后面无需跟宾语，就能表达完整的句意；不及物动词不能直接接宾语，如需接宾语，必须搭配对应的介词。\n2. 专升本高频不及物动词\nbegin/start（开始）、run（跑）、swim（游泳）、arrive（到达）、die（死亡）、listen（听）、talk（交谈）、go（去）、come（来）、cry（哭）、graduate（毕业）、work（工作）、live（居住）、happen（发生）等。\n3. 高频固定搭配（不及物动词+介词）\n•\tarrive：arrive here/there/home（地点副词，不加介词）；arrive in + 大地点（国家、城市）；arrive at + 小地点（车站、机场、学校）\n•\ttalk：talk with/to sb. 与某人交谈；talk about sth. 谈论某事\n•\tlisten：listen to sb./sth. 听某人/某物\n•\tcome：come into the classroom 走进教室；come in 进来\n•\tgraduate：graduate from 毕业于\n•\tlive：live in sp. 居住在某地\n\n句型三：主语 + 谓语 + 间接宾语 + 直接宾语（主谓双宾，S+V+IO+DO）\n1. 核心定义\n•\t口诀：间人直物。间接宾语表人，是动作的接收者；直接宾语表物，是动作的直接对象。\n•\t互换规则：直接宾语和间接宾语可以互换位置，互换时需借助介词，常用to或for。\n2. 双宾动词与介词搭配\n搭配介词\t高频双宾动词\nto（表动作的方向，“对、向”）\ttell sb. sth. 告诉某人某事；give sb. sth. 给某人某物；send sb. sth. 寄/送给某人某物；lend sb. sth. 借给某人某物；offer sb. sth. 提供给某人某物；teach sb. sth. 教某人某事；show sb. sth. 展示某物给某人；bring sb. sth. 带给某人某物；promise sb. sth. 承诺某人某事\nfor（表动作的目的，“为、给”）\tbuy sb. sth. 给某人买某物；cook sb. sth. 给某人做某物；prepare sb. sth. 给某人准备某物；order sb. sth. 给某人订购某物\n注意：borrow sth. from sb. 从某人处借某物，该动词不能接双宾语结构。\n\n句型四：主语 + 谓语 + 宾语 + 宾语补足语（主谓宾宾补，S+V+O+OC）\n1. 核心定义\n•\t宾语补足语（宾补）：对宾语的状态、动作进行补充说明，让句子句意完整。\n•\t核心判断方法：在宾语和其后面的成分之间加一个“是”，如果能构成逻辑正确的一句话，那么后面的成分就是宾补。\n•\t必备条件：该句型中的谓语动词为及物动词，且必须加宾补才能表达完整的意思；宾语和宾补之间存在逻辑上的主谓关系。\n2. 可作宾补的成分\n形容词、名词、副词、介词短语、不定式(to do)、动名词(doing)、过去分词(done)等。\n3. 全新例句（含判断验证）\n1.\tWe should keep our classroom clean and tidy. 我们应该保持我们的教室干净整洁。\n验证：我们的教室是干净整洁的（逻辑成立，clean and tidy是宾补）。\n2.\tThe teacher asked us to finish the paper within an hour. 老师要求我们在一小时内完成试卷。\n验证：我们要在一小时内完成试卷（逻辑成立，to finish the paper within an hour是宾补）。\n3.\tWe all call him \"Old Wang\". 我们都叫他老王。\n验证：他是老王（逻辑成立，\"Old Wang\"是宾补）。\n4.\tI saw her dancing in the park yesterday. 我昨天看到她在公园里跳舞。\n验证：她正在公园里跳舞（逻辑成立，dancing in the park是宾补）。\n\n句型五：主语 + 系动词 + 表语（主系表，S+L+P）\n1. 核心成分定义\n•\t系动词：也叫连系动词，是一类特殊的谓语动词，作用是连接主语和表语，本身有词义但不能单独作谓语，必须后面接表语。\n•\t表语：用来说明主语的身份、特征、性质或状态，常由名词、形容词、动名词(doing)、不定式(to do)、介词短语、从句充当。\n2. 系动词的6大分类（专升本高频考点）\n（1）be动词类（最核心）\nam, is, are, was, were（意为“是”）\n•\t口诀：我(I)用am，你(you)用are，is跟着he/she/it；单数主语用is/was，复数主语要用are/were。\n•\t例句：She is a college student. 她是一名大学生。\n（2）感官系动词（……起来）\nlook（看起来）、sound（听起来）、smell（闻起来）、taste（尝起来）、feel（摸起来、感觉起来）\n•\t核心用法：后面必须接形容词作表语，不能接副词。\n•\t例句：The song sounds very relaxing. 这首歌听起来非常舒缓。\n（3）持续类系动词（保持、仍然是）\nkeep, stay, remain\n•\t例句：You should keep calm when you meet difficulties. 遇到困难时你应该保持冷静。\n（4）变化类系动词（变得）\nbecome（变得，可接职业）、get（天气/情绪变化）、go（多指变坏）、grow（逐渐变化，长大/变老）、fall（进入某种状态）、turn（颜色变化）、come（实现）\n•\t高频搭配：\nbecome a teacher/doctor 成为一名老师/医生；come true 实现；get cold/warm 变冷/变暖；go bad 变质；grow old 变老；fall ill/asleep 生病/睡着；turn red/yellow 变红/变黄\n•\t例句：The leaves turn yellow in autumn. 树叶在秋天变黄。\n（4）表象类系动词（似乎、好像）\nseem, appear (to be)\n•\t例句：He seems very upset today. 他今天看起来很沮丧。\n（5）终止类系动词（结果是、被证明是）\nprove, turn out (to be)\n•\t例句：The plan turned out to be a great success. 这个计划结果大获成功。\n3. 系动词核心注意事项\n1.\t除变化类系动词外，其他所有系动词无进行时态；\n2.\t所有系动词无被动语态。\n4. 全新例句\n1.\tThe flowers in the garden smell very sweet. 花园里的花闻起来很香。\n2.\tHe became a famous doctor after graduating from medical school. 他从医学院毕业后成为了一名有名的医生。\n3.\tThe milk will go bad quickly in such hot weather. 这么热的天气里，牛奶很快就会变质。\n4.\tYou will remain young forever if you keep a positive attitude. 如果你保持积极的心态，就会永远年轻。\n\n三、句子修饰成分补充：定语 & 状语\n1. 定语\n核心定义\n对名词或代词起修饰、限定作用的句子成分，翻译时多带“……的”的含义。\n可作定语的形式\n1.\t形容词作定语\n例句：The girl watched a touching and warm movie last night. 这个女孩昨晚看了一部感人又温暖的电影。\n2.\t介词短语作定语\n例句：The books on the shelf are all about English grammar. 架子上的书全都是关于英语语法的。\n3.\t从句作定语（即定语从句）\n例句：The boy who won the competition is my monitor. 赢得比赛的那个男孩是我的班长。\n2. 状语\n核心定义\n用来描述动作发生的时间、地点、原因、目的、结果、让步、方式、伴随等状态的句子成分，用来修饰动词、形容词、副词或整个句子。\n可作状语的形式\n1.\t副词作状语\n例句：He finally passed the driving test on his third try. 他第三次考试终于通过了驾考。\n2.\t介词短语作状语\n例句：She has an English class at 8 o'clock every morning. 她每天早上8点有一节英语课。\n3.\t从句作状语（即状语从句）\n例句：I will wait for you at the school gate until you finish your class. 我会在校门口等你，直到你下课。"
+    },
+    "cat6": {
+      "id": "cat6",
+      "title": "时态",
+      "enTitle": "Tenses",
+      "coreConcept": "表示动作发生的时间和状态。",
+      "formula": [],
+      "examples": []
+    },
+    "cat7": {
+      "id": "cat7",
+      "title": "被动语态",
+      "enTitle": "Passive Voice",
+      "coreConcept": "主语是动作的承受者。",
+      "formula": [],
+      "examples": []
+    },
+    "cat8": {
+      "id": "cat8",
+      "title": "动词的非谓语形式",
+      "enTitle": "Non-finite Verbs",
+      "coreConcept": "动词在句中不作谓语的形式（不定式、ing、ed）。",
+      "formula": [],
+      "examples": []
+    },
+    "cat9": {
+      "id": "cat9",
+      "title": "主谓一致",
+      "enTitle": "Subject-Verb Agreement",
+      "coreConcept": "谓语动词的单复数形式必须与主语保持一致。四大原则：就近、就远、意义一致、中心词。",
+      "formula": [
+        {
+          "label": "就近原则",
+          "items": [
+            {
+              "condition": "not only...but also",
+              "structure": "与最近的主语一致"
+            }
+          ]
+        },
+        {
+          "label": "就远原则",
+          "items": [
+            {
+              "condition": "as well as/with",
+              "structure": "与核心主语一致"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "en": "There is a desk and four chairs.",
+          "cn": "办公室里有一张桌子和四把椅子。",
+          "tips": "There be 句型遵循就近原则。"
+        },
+        {
+          "en": "The teacher with his students is visiting...",
+          "cn": "老师和学生们在一起参观...",
+          "tips": "with结构遵循就远原则。"
+        }
+      ],
+      "content": "主谓一致\n一、主谓一致核心定义\n主谓一致，顾名思义，指句子中谓语动词的单复数形式，必须与句子主语的单复数形式保持一致，是专升本英语语法的核心考点之一。\n核心遵循四大基础原则：就近原则、就远原则、意义一致原则、中心词原则，同时补充度量衡原则与其他高频特殊考点。\n\n二、就近原则\n1. 核心定义\n谓语动词的单复数形式，与距离它位置更近的主语保持一致，无需考虑距离较远的主语。\n2. 核心适用结构\n固定结构\t含义\nnot only...but (also)...\t不仅……而且……\nnot...but...\t不是……而是……\nneither...nor...\t既不……也不……\neither...or...\t或者……或者……\nor\t或者\nthere be/there seem to be 句型\t有/似乎有\n3. 例句\n1.\tThere is a desk and four chairs in the office. 办公室里有一张桌子和四把椅子。\n2.\tThere seem to be a few mistakes in your paper. 你的论文里似乎有几处错误。\n3.\tNot you but your deskmate is responsible for the accident. 不是你，而是你的同桌要为这次事故负责。\n4.\tEither you or she has to take over this project. 要么是你，要么是她，必须接手这个项目。\n5.\tNeither the manager nor the employees know the details of the plan. 经理和员工们都不知道这个计划的细节。\n\n三、就远原则\n1. 核心定义\n谓语动词的单复数形式，与距离它较远的、句子真正的核心主语保持一致，不受插入的修饰短语影响。\n2. 核心适用结构\n短语类型\t核心连接词/短语\n表并列伴随\tas well as, with, along with, together with\n表排除\tbut, besides, except, excluding, other than\n表包含\tincluding\n表选择\trather than（而不是）\n表类比\tlike\n3. 例句\n1.\tA library with 50,000 books has been donated to the rural school. 一座藏书5万册的图书馆，被捐赠给了这所乡村学校。\n2.\tAll of us except Tom have watched this movie. 除了汤姆，我们所有人都看过这部电影了。\n3.\tThe teacher, together with his students, is visiting the museum. 这位老师，和他的学生们一起，正在参观博物馆。\n4.\tMy sister rather than I is chosen to attend the competition. 是我的姐姐，而不是我，被选中参加这次比赛。\n5.\tNo one including my parents knows my secret. 包括我父母在内，没有人知道我的秘密。\n\n四、意义一致原则\n核心规则：谓语动词的单复数，不由主语的形式决定，而由主语所表达的实际意义决定。\n1. 集体名词作主语\n集体名词（family, class, team, group, committee, government, audience等）作主语时：\n•\t表整体概念时，谓语动词用单数；\n•\t表集体中的所有个体成员时，谓语动词用复数。\n•\t例句：\na.\tMy family is a warm and happy one. 我的家庭是一个温暖幸福的家庭。（表整体）\nb.\tMy family are all fond of traveling. 我的家人都喜欢旅行。（表个体成员）\nc.\tThe basketball team is the champion of this season. 这支篮球队是本赛季的冠军。（表整体）\nd.\tThe basketball team are having a rest in the locker room. 篮球队的队员们正在更衣室休息。（表个体成员）\n2. 并列名词作主语\n•\t结构1：a/an/the + 单数名词 + and + a/an/the + 单数名词，表示两个不同的人/物，作主语时，谓语动词用复数。\n•\t结构2：a/an/the + 单数名词 + and + 单数名词，表示同一个人/物的两种身份，作主语时，谓语动词用单数。\n•\t例句：\na.\tA pianist and a painter are attending the award ceremony. 一位钢琴家和一位画家正在出席颁奖典礼。（两个人，复数）\nb.\tA singer and dancer is invited to the evening party. 一位歌手兼舞者被邀请参加这场晚会。（同一个人，单数）\nc.\tThe writer and the teacher have made a speech respectively. 这位作家和这位老师分别做了演讲。（两个人，复数）\nd.\tThe writer and teacher has published many popular novels. 这位作家兼老师出版了很多畅销小说。（同一个人，单数）\n3. 不定代词修饰主语\n当主语被neither, either, every, each, no等词修饰时，无论指代的是单数还是复数概念，谓语动词一律用单数。\n•\t例句：\na.\tEvery student and every teacher has received the new notice. 每一位学生和每一位老师，都收到了新的通知。\nb.\tEach boy and each girl gets a gift on Children's Day. 每个男孩和女孩，在儿童节都收到了一份礼物。\nc.\tNeither answer is correct. 两个答案没有一个是正确的。\n4. the number of 与 a number of\n结构\t含义\t谓语动词单复数\nthe number of + 可数名词复数\t……的数量\t单数\na number of + 可数名词复数\t许多的、大量的\t复数\n•\t例句：\na.\tThe number of books in this library is over 100,000. 这座图书馆的藏书量超过了10万册。\nb.\tA number of readers come here to borrow books every day. 每天都有大量读者来这里借书。\nc.\tThe number of tourists visiting this scenic spot is increasing year by year. 来这个景点旅游的游客数量逐年上涨。\nd.\tA number of new houses have been built in the village this year. 今年村里建了很多新房子。\n\n五、中心词原则\n核心规则：谓语动词的单复数，由句子中真正的中心主语决定，不受修饰词的影响。\n1. many 与 many a\n结构\t含义\t谓语动词单复数\nmany + 可数名词复数\t许多的\t复数\nmany a + 可数名词单数\t许多的（语气更强，书面语）\t单数\n•\t例句：\na.\tMany children like watching cartoons. 很多孩子都喜欢看动画片。\nb.\tMany a child likes watching cartoons. 很多孩子都喜欢看动画片。\n2. more than 相关结构\n结构\t含义\t谓语动词单复数\nmore than one + 可数名词单数\t不止一个\t单数\nmore + 可数名词复数 + than one\t不止一个\t复数\n•\t例句：\na.\tMore than one student is late for class today. 今天不止一个学生上课迟到了。\nb.\tMore students than one are late for class today. 今天不止一个学生上课迟到了。\n3. 分数/百分数/不定量词结构\n结构：rest/most/some/half/分数/百分数 + of + 名词/代词 作主语时，谓语动词的单复数，由of后面的名词/代词决定：\n•\tof后接不可数名词/单数可数名词，谓语用单数；\n•\tof后接可数名词复数，谓语用复数。\n•\t例句：\na.\tTwo fifths of the land in this area is covered with forests. 这个地区五分之二的土地都被森林覆盖。（land为不可数名词，谓语单数）\nb.\t30% of the employees in this company are female. 这家公司30%的员工都是女性。（employees为复数名词，谓语复数）\nc.\tMost of the water in the river has been polluted. 这条河里的大部分水都被污染了。（water为不可数名词，谓语单数）\nd.\tMost of the villagers have moved to the new town. 大部分村民都搬到了新的城镇。（villagers为复数名词，谓语复数）\n\n六、度量衡原则\n1. 核心规则\n当主语是表示时间、距离、金钱、长度、重量、温度等度量衡单位的短语时，无论数量多少，均将其视为一个整体概念，谓语动词一律用单数。\n2. 例句\n1.\tTen thousand years is too short for a lifetime of love. 一万年的时光，对于一生的爱恋来说太过短暂。\n2.\t100 miles is a long journey for a hiker. 100英里对于徒步旅行者来说，是一段漫长的路程。\n3.\tTen thousand yuan is not a small sum of money for an ordinary family. 一万元对于普通家庭来说，不是一笔小钱。\n4.\t50 kilograms is the standard weight for this model of machine. 50公斤是这款机器的标准重量。\n\n七、主谓一致其他高频考点\n1.\t名词性从句/完整句子作主语：视为一个整体概念，谓语动词一律用单数。\n例句：That he passed the exam successfully makes his parents very happy. 他顺利通过了考试，这件事让他的父母非常开心。\n2.\t非谓语动词（to do/doing）作主语：视为一个整体概念，谓语动词一律用单数。\n例句：Reading in the sun is harmful to your eyes. 在阳光下看书对眼睛有害。\n3.\tthe + 姓氏复数：表“某某一家人/夫妇二人”，作主语时，谓语动词用复数。\n例句：The Smiths are going to spend their holiday in Hainan. 史密斯一家打算去海南度假。\n4.\tthe + 形容词：表“一类人”，如the rich（富人）、the poor（穷人）、the old（老人）、the young（年轻人），作主语时，谓语动词用复数。\n例句：The old are well taken care of in this nursing home. 这家养老院里的老人都被照顾得很好。"
+    },
+    "cat10": {
+      "id": "cat10",
+      "title": "并列复合句",
+      "enTitle": "Compound Sentences",
+      "coreConcept": "由并列连词连接两个或以上简单句。",
+      "formula": [],
+      "examples": []
+    },
+    "cat11": {
+      "id": "cat11",
+      "title": "主从复合句",
+      "enTitle": "Complex Sentences",
+      "coreConcept": "包含一个主句和一个或多个从句。",
+      "formula": [],
+      "examples": []
+    },
+    "cat12": {
+      "id": "cat12",
+      "title": "省略",
+      "enTitle": "Ellipsis",
+      "coreConcept": "为了简洁去掉重复成分。",
+      "formula": [],
+      "examples": []
+    },
+    "cat13": {
+      "id": "cat13",
+      "title": "倒装",
+      "enTitle": "Inversion",
+      "coreConcept": "谓语全部或部分放在主语前。",
+      "formula": [],
+      "examples": []
+    },
+    "cat14": {
+      "id": "cat14",
+      "title": "强调",
+      "enTitle": "Emphasis",
+      "coreConcept": "It is ... that ... 强调句型。",
+      "formula": [],
+      "examples": []
+    },
+    "cat15": {
+      "id": "cat15",
+      "title": "虚拟语气",
+      "enTitle": "Subjunctive Mood",
+      "coreConcept": "用来表达与客观事实相反的假设，或者实现可能性极小的愿望。重点在于：动词要降级（时态后退一步）。",
+      "formula": [
+        {
+          "label": "与【现在】事实相反",
+          "items": [
+            {
+              "condition": "条件从句",
+              "structure": "If + 主语 + did / were"
+            },
+            {
+              "condition": "主句",
+              "structure": "主语 + would/could/should/might + do"
+            }
+          ]
+        },
+        {
+          "label": "与【过去】事实相反",
+          "items": [
+            {
+              "condition": "条件从句",
+              "structure": "If + 主语 + had done"
+            },
+            {
+              "condition": "主句",
+              "structure": "主语 + would/could/should/might + have done"
+            }
+          ]
+        }
+      ],
+      "examples": [
+        {
+          "en": "If I were you, I would choose this job.",
+          "cn": "(如果我是你，我就会选这份工作。)",
+          "tips": "注意，即使主语是I，be动词也要用were。"
+        },
+        {
+          "en": "If it had rained yesterday, we would have stayed at home.",
+          "cn": "(如果昨天下了雨，我们就会待在家里。)",
+          "tips": "这是对过去事实的虚拟，从句用had done，主句用would have done。"
+        }
+      ]
+    }
+  },
+  "questions": [
+    {
+      "id": "q1",
+      "catId": "cat1",
+      "text": "She ______ in her search for the truth.",
+      "options": [
+        "insist",
+        "stick",
+        "upholds",
+        "persists"
+      ],
+      "answer": 3,
+      "tag": "动词辨析",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：她始终坚持探寻真相。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q2",
+      "catId": "cat1",
+      "text": "The school has decided to ______ a different approach ______ discipline.",
+      "options": [
+        "adopt; of",
+        "adopt; to",
+        "adapt; of",
+        "adapt; to"
+      ],
+      "answer": 1,
+      "tag": "动词+介词固定搭配",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：学校已经决定采用一种不同的纪律管理方法。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q3",
+      "catId": "cat1",
+      "text": "The recent research shows that quite a few traffic accidents ______ driving after drinking.",
+      "options": [
+        "result in",
+        "result from",
+        "results in",
+        "results from"
+      ],
+      "answer": 1,
+      "tag": "动词短语辨析",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：最新研究表明，相当多的交通事故是由酒驾导致的。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q4",
+      "catId": "cat1",
+      "text": "His ______ of five languages qualifies him ______ an interpreter at the international conference.",
+      "options": [
+        "mastery; with",
+        "master; with",
+        "master; for",
+        "mastery; for"
+      ],
+      "answer": 3,
+      "tag": "名词+介词固定搭配",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：他精通五门语言，这让他有资格担任国际会议的口译员。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q5",
+      "catId": "cat1",
+      "text": "______ her interest in AI, it is wise ______ her to choose computer science as her major.",
+      "options": [
+        "Given; for",
+        "Considered; for",
+        "Considering; for",
+        "Given; of"
+      ],
+      "answer": 3,
+      "tag": "介词/连词辨析",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：考虑到她对人工智能的兴趣，她选择计算机科学作为专业是非常明智的。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q6",
+      "catId": "cat1",
+      "text": "Her efforts in this field have ______ to the team's success.",
+      "options": [
+        "contributed",
+        "attributed",
+        "distribute",
+        "reputed"
+      ],
+      "answer": 0,
+      "tag": "动词辨析与固定搭配",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：她在这个领域的付出为团队的成功做出了贡献。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q7",
+      "catId": "cat8",
+      "text": "______ the opinion of most people, ______ me, it is a very sound investment.",
+      "options": [
+        "In; includes",
+        "On; including",
+        "In; including",
+        "On; includes"
+      ],
+      "answer": 2,
+      "tag": "介词用法+非谓语动词",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：在大多数人看来，包括我在内，这是一项非常稳妥的投资。...",
+      "knowledgeId": "cat8"
+    },
+    {
+      "id": "q8",
+      "catId": "cat8",
+      "text": "We're ______ a new energy vehicle in light of the favorable price.",
+      "options": [
+        "considered buying",
+        "considering buying",
+        "considered to buy",
+        "considering to buy"
+      ],
+      "answer": 1,
+      "tag": "动名词作宾语",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：鉴于价格优惠，我们正在考虑购买一辆新能源汽车。...",
+      "knowledgeId": "cat8"
+    },
+    {
+      "id": "q9",
+      "catId": "cat1",
+      "text": "She lives ______ and often feels ______.",
+      "options": [
+        "alone; lonely",
+        "lonely; lonely",
+        "lonely; alone",
+        "alone; alone"
+      ],
+      "answer": 0,
+      "tag": "形副词性与词义辨析",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：她一个人住，经常感到孤独。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q10",
+      "catId": "cat15",
+      "text": "It was proposed that this matter ______ at the meeting.",
+      "options": [
+        "have discussed",
+        "be discussed",
+        "should discuss",
+        "discuss"
+      ],
+      "answer": 1,
+      "tag": "建议类名词性从句虚拟",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：有人提议这件事应该在会议上讨论。...",
+      "knowledgeId": "cat15"
+    },
+    {
+      "id": "q11",
+      "catId": "cat13",
+      "text": "Not once in my life ______ able to look a friend in the eye and say these words.",
+      "options": [
+        "would I",
+        "I was",
+        "had I been",
+        "I had been"
+      ],
+      "answer": 2,
+      "tag": "否定词放句首的部分倒装",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：我这辈子从来没有一次能够看着朋友的眼睛说出这些话。...",
+      "knowledgeId": "cat13"
+    },
+    {
+      "id": "q12",
+      "catId": "cat11",
+      "text": "The diverse use of bamboo has long been known in China, ______ the giant woody grass has been utilized since the 11th century BC.",
+      "options": [
+        "that",
+        "where",
+        "whose",
+        "when"
+      ],
+      "answer": 1,
+      "tag": "定语从句",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：竹子的多种用途在中国早已为人所知...。",
+      "knowledgeId": "cat11"
+    },
+    {
+      "id": "q13",
+      "catId": "cat6",
+      "text": "Over recent years, China ______ an increasingly important role in international affairs.",
+      "options": [
+        "has been playing",
+        "had been played",
+        "was playing",
+        "plays"
+      ],
+      "answer": 0,
+      "tag": "现在完成进行时",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：近年来，中国在国际事务中一直发挥着越来越重要的作用。...",
+      "knowledgeId": "cat6"
+    },
+    {
+      "id": "q14",
+      "catId": "cat11",
+      "text": "It is to be debated ______ it is necessary to study the proposals for several more weeks.",
+      "options": [
+        "what",
+        "that",
+        "whether",
+        "if"
+      ],
+      "answer": 2,
+      "tag": "主语从句",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：是否有必要再花几周时间研究这些提案，还有待商榷。...",
+      "knowledgeId": "cat11"
+    },
+    {
+      "id": "q15",
+      "catId": "cat1",
+      "text": "Much ______ my surprise, he has changed so much that I could hardly recognize him.",
+      "options": [
+        "to",
+        "for",
+        "on",
+        "with"
+      ],
+      "answer": 0,
+      "tag": "介词固定搭配",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：令我非常惊讶的是，他变化太大了，我几乎认不出他了。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q16",
+      "catId": "cat15",
+      "text": "John ______ to the hospital had he known that Tom would be there too.",
+      "options": [
+        "never has gone",
+        "would never have gone",
+        "would never go",
+        "could never go"
+      ],
+      "answer": 1,
+      "tag": "if省略的虚拟语气倒装",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：如果约翰早知道汤姆也会去医院，他绝不会去的。...",
+      "knowledgeId": "cat15"
+    },
+    {
+      "id": "q17",
+      "catId": "cat15",
+      "text": "Next week, Donald will fly to New York and attend a meeting there. ______",
+      "options": [
+        "So am I",
+        "I am so",
+        "So will I",
+        "I will so"
+      ],
+      "answer": 2,
+      "tag": "so引导的肯定倒装",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：下周，唐纳德将飞往纽约并在那里参加一个会议。我也会去。...",
+      "knowledgeId": "cat15"
+    },
+    {
+      "id": "q18",
+      "catId": "cat1",
+      "text": "Nothing in one's life is ______ than health.",
+      "options": [
+        "important",
+        "least important",
+        "most important",
+        "more important"
+      ],
+      "answer": 3,
+      "tag": "形容词比较级",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：人的一生中，没有什么比健康更重要。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q19",
+      "catId": "cat15",
+      "text": "As the famous saying goes, \"Where ______ a will, there is a way!\"",
+      "options": [
+        "there has been",
+        "there is",
+        "there will be",
+        "there had been"
+      ],
+      "answer": 1,
+      "tag": "there be存现句",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：正如那句名言所说：“有志者，事竟成！”...",
+      "knowledgeId": "cat15"
+    },
+    {
+      "id": "q20",
+      "catId": "cat13",
+      "text": "______ Tom insisted he was innocent, ______ people seemed to believe him.",
+      "options": [
+        "The more; the less",
+        "More; more",
+        "Less; less",
+        "The more; the most"
+      ],
+      "answer": 0,
+      "tag": "the+比较级固定句式",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：汤姆越是坚称自己是无辜的，人们似乎就越不相信他。...",
+      "knowledgeId": "cat13"
+    },
+    {
+      "id": "q21",
+      "catId": "cat13",
+      "text": "Ben started out early ______ late for school.",
+      "options": [
+        "not so as to be",
+        "so as not to be",
+        "so as to be not",
+        "so as to not be"
+      ],
+      "answer": 1,
+      "tag": "不定式作目的状语",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：本早早出发，以免上学迟到。...",
+      "knowledgeId": "cat13"
+    },
+    {
+      "id": "q22",
+      "catId": "cat8",
+      "text": "The flood was tremendously destructive, ______ 125 villages downstream in that region.",
+      "options": [
+        "drown",
+        "drowns",
+        "drowning",
+        "was drowned"
+      ],
+      "answer": 2,
+      "tag": "分词作结果状语",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：这场洪水破坏力极大，淹没了该地区下游的125个村庄。...",
+      "knowledgeId": "cat8"
+    },
+    {
+      "id": "q23",
+      "catId": "cat1",
+      "text": "He was not so much ______ as ______.",
+      "options": [
+        "anger; disappointing",
+        "anger; disappointed",
+        "angry; disappointing",
+        "angry; disappointed"
+      ],
+      "answer": 3,
+      "tag": "ed/ing形容词辨析",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：与其说他生气，不如说他失望。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q24",
+      "catId": "cat1",
+      "text": "Steve is an early bird ______ his roommate is a night owl.",
+      "options": [
+        "while",
+        "when",
+        "because",
+        "so"
+      ],
+      "answer": 0,
+      "tag": "并列连词辨析",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：史蒂夫是个早起的人，而他的室友是个夜猫子。...",
+      "knowledgeId": "cat1"
+    },
+    {
+      "id": "q25",
+      "catId": "cat8",
+      "text": "From this author's ______ accounts, the Westerners learned of coal, gunpowder, printing, paper money, and silk.",
+      "options": [
+        "write",
+        "writes",
+        "wrote",
+        "written"
+      ],
+      "answer": 3,
+      "tag": "分词作定语",
+      "source": "2025年云南真题",
+      "keyPoint": "1. 句子翻译：从这位作者的书面记述中，西方人了解到了煤炭、火药、印刷术、纸币和丝绸。...",
+      "knowledgeId": "cat8"
+    }
+  ]
+}
