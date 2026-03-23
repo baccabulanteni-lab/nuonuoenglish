@@ -1,0 +1,17 @@
+{
+  "name": "糯糯专升本英语",
+  "short_name": "糯糯英语",
+  "description": "专注专升本英语备考，干净、纯粹的刷题体验。",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4F3ED",
+  "theme_color": "#B07D60",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -8,6 +8,7 @@ import PastPapersModule from './components/PastPapersModule';
 import KnowledgeModule from './components/KnowledgeModule';
 import { cn } from './components/UI';
 import { ChevronLeft, ArrowRight, Sparkles, BookOpen, Target, RefreshCw } from 'lucide-react';
+import { MobileGestures } from './components/MobileGestures';
 
 type Tab = 'home' | 'grammar' | 'reading' | 'wrongQuestions' | 'pastPapers' | 'knowledge';
 
@@ -55,6 +56,10 @@ export default function App() {
           "w-full md:max-w-4xl lg:max-w-5xl h-[100dvh] md:h-[90vh] md:rounded-[2.5rem] flex flex-col relative shadow-2xl transition-all duration-500 overflow-hidden print:overflow-visible print:h-auto print:max-w-none print:shadow-none print:rounded-none",
           getWrapperBg()
         )}>
+          <MobileGestures 
+            enabled={activeTab !== 'home'} 
+            onSwipeRight={() => setActiveTab('home')} 
+          />
 
           {activeTab !== 'home' && (
             <div className="h-16 flex items-center justify-between px-6 shrink-0 relative z-20 bg-inherit">

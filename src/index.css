@@ -19,6 +19,7 @@
   html {
     height: 100%;
     overflow: hidden;
+    overscroll-behavior-y: none; /* Prevent pull-to-refresh */
   }
   body {
     @apply bg-parchment text-ink font-sans antialiased selection:bg-ink/10;
