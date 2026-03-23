@@ -12,8 +12,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.1",
-    "astro": "^6.0.8",
+    "@astrojs/react": "^4.2.1",
+    "@astrojs/tailwind": "^5.1.5",
+    "astro": "^5.18.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.577.0",
     "motion": "^12.38.0",
