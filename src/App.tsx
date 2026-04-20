@@ -228,6 +228,7 @@ export default function App() {
               await refreshStatesFromStorage();
               dispatchVocabStatsUpdated();
               window.dispatchEvent(new Event(DAILY_CHALLENGE_EVENT));
+              window.dispatchEvent(new Event('vocab-pull-synced'));
               initialPullDoneRef.current = true;
               setSyncStatus('synced');
             } else if (localHasData) {
@@ -398,6 +399,7 @@ export default function App() {
           await refreshStatesFromStorage();
           dispatchVocabStatsUpdated();
           window.dispatchEvent(new Event(DAILY_CHALLENGE_EVENT));
+          window.dispatchEvent(new Event('vocab-pull-synced'));
         }
         setSyncStatus('synced');
       } catch (err) {

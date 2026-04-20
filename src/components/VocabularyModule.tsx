@@ -527,7 +527,11 @@ export default function VocabularyModule({
       setStorageRefreshTick(t => t + 1);
     };
     window.addEventListener(DAILY_CHALLENGE_EVENT, trigger);
-    return () => window.removeEventListener(DAILY_CHALLENGE_EVENT, trigger);
+    window.addEventListener('vocab-pull-synced', trigger);
+    return () => {
+      window.removeEventListener(DAILY_CHALLENGE_EVENT, trigger);
+      window.removeEventListener('vocab-pull-synced', trigger);
+    };
   }, []);
 
   useEffect(() => {
