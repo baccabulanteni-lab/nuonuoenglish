@@ -105,6 +105,7 @@ export default function App() {
   const authReadyRef = useRef(false);
   const lastUploadedFingerprintRef = useRef<string | null>(null);
   const uploadDebounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const initialPullDoneRef = useRef(false);
 
   const computeLocalVocabFingerprint = (snap: Record<string, string | null>) => {
     // VOCAB_BACKUP_STORAGE_KEYS 的顺序在导出/采集里固定，因此指纹稳定。
@@ -114,6 +115,10 @@ export default function App() {
   const flushUpload = async () => {
     const s = authSessionRef.current;
     if (!s || !authReadyRef.current || !s.user.licenseActivated) return;
+    if (!initialPullDoneRef.current) {
+      console.log('[Sync] 初始同步尚未完成，跳过自动上传以防覆盖云端。');
+      return;
+    }
     
     // 异步采集包含 IndexedDB 的完整快照
     const snap = await snapshotLocalProgressAsync();
@@ -223,18 +228,21 @@ export default function App() {
               await refreshStatesFromStorage();
               dispatchVocabStatsUpdated();
               window.dispatchEvent(new Event(DAILY_CHALLENGE_EVENT));
+              initialPullDoneRef.current = true;
               setSyncStatus('synced');
             } else if (localHasData) {
               console.log('[Sync] 云端为空但本地有数据，正在强制上传初始化云端...');
               const ok = await saveCloudProgress(session.token, localSnap);
               if (ok) {
                 lastUploadedFingerprintRef.current = computeLocalVocabFingerprint(localSnap);
+                initialPullDoneRef.current = true;
                 setSyncStatus('synced');
               } else {
                 setSyncStatus('error');
               }
             } else {
               console.log('[Sync] 云端和本地均无有效进度。');
+              initialPullDoneRef.current = true;
               setSyncStatus('synced');
             }
           } catch (e) {
@@ -362,6 +370,7 @@ export default function App() {
     if (!authSession || !authReady || !authSession.user.licenseActivated) return;
 
     const save = async () => {
+      if (!initialPullDoneRef.current) return;
       const snap = await snapshotLocalProgressAsync();
       const fp = computeLocalVocabFingerprint(snap);
       if (fp === lastUploadedFingerprintRef.current) return;
