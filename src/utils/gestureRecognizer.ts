@@ -179,14 +179,6 @@ export const GESTURE_TEMPLATES = [
     name: "underline", // 略向右上斜
     points: resample([{ x: 0, y: 0 }, { x: 200, y: -25 }], NUM_POINTS)
   },
-  {
-    name: "underline", // 微弧向下
-    points: resample([{ x: 0, y: 0 }, { x: 100, y: 20 }, { x: 200, y: 0 }], NUM_POINTS)
-  },
-  {
-    name: "underline", // 微弧向上
-    points: resample([{ x: 0, y: 0 }, { x: 100, y: -20 }, { x: 200, y: 0 }], NUM_POINTS)
-  },
 
   // Checkmarks — 必须有明显的「先下折、后右上扬」折线特征，与横线区别拉大
   {

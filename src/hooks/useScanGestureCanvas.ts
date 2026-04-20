@@ -135,6 +135,7 @@ export function useScanGestureCanvas({
     const width = maxX - minX;
     const height = maxY - minY;
 
+    // 核心几何特征计算
     const start = points.current[0];
     const end = points.current[points.current.length - 1];
     let pathLen = 0;
@@ -144,68 +145,41 @@ export function useScanGestureCanvas({
       pathLen += Math.hypot(b.x - a.x, b.y - a.y);
     }
     const chordLen = Math.hypot(end.x - start.x, end.y - start.y);
-    /** 越接近 1 越像直线；弧形勾 / U 形会明显变小 */
     const straightness = chordLen / Math.max(pathLen, 1e-6);
 
     const distStartEnd = Math.sqrt(Math.pow(start.x - end.x, 2) + Math.pow(start.y - end.y, 2));
     const isClosed = distStartEnd < Math.max(width, height) * 0.6;
 
+    // 勾的特征：路径中必然存在一个「最低点」（即 dip），且该点应明显低于起点和终点（形成 V 字谷）
+    const dipY = Math.max(...ys);
+    const downstrokeH = dipY - start.y;
+    const upstrokeH = dipY - end.y;
+    /** 形成“谷”的特征：下行 > 6px 且上行 > 10px (上行通常更长) */
+    const hasCheckmarkValley = downstrokeH > 6 && upstrokeH > 10;
+
     const THRESHOLD = 0.65;
     const mark = (s: WordStatus) => onGestureMarkRef.current(s);
 
-    // 勾的特征：路径中必然存在一个「最低点」（即 dip），且该点应明显低于（Y更大）终点
-    const dipY = Math.max(...ys);
-    // 勾形特征：最低点比终点低（上扬高度）
-    const checkmarkMidDip = dipY - end.y;
-
     if (result.score > THRESHOLD) {
       if (result.name === 'circle') {
-        // 约定：画圈 = 生词（判定闭合度与宽高比）
         if (isClosed && width > 15 && height > 15) {
           mark('new');
         }
-      } else if (result.name === 'checkmark') {
-        // ⚠️ checkmark 模板与横线容易混淆，需要几何二次过滤：
-        // 「横线」特征：宽扁、直线度高、终点不明显高于起点
-        // 「勾」特征：有明显的「先下折后右上扬」，终点比中段高（checkmarkMidDip > 0）
-        const ySpan = Math.abs(start.y - end.y);
-        const underlineYtol = Math.max(20, width * 0.25, height * 0.9);
-        // 横线判断：放宽直线度（0.72）和高度容差（60），允许略斜的自然横划
-        const isHorizontalUnderline =
-          width > 28 &&
-          height < 60 &&
-          width > height * 1.3 &&
-          straightness > 0.72 &&
-          ySpan < underlineYtol;
-        // 勾的强制条件：终点必须明显比路径中段高（先折下再上扬）
-        const hasCheckmarkUpturn = checkmarkMidDip > Math.max(8, height * 0.2);
-
-        if (isHorizontalUnderline) {
-          mark('familiar_70');
-        } else if (hasCheckmarkUpturn && height > 10 && width > 10) {
-          mark('familiar_100');
-        }
-      } else if (result.name === 'underline') {
-        // 约定：下划线 = 七分熟
-        if (width > 20) mark('familiar_70');
+      } else if (hasCheckmarkValley && height > 12 && width > 12) {
+        // 核心修正：只要存在明显的 V 型折返特征，不论识别为 checkmark 还是 underline，均认定为全熟
+        mark('familiar_100');
+      } else if (result.name === 'checkmark' || result.name === 'underline') {
+        // 如果没有折返特征，但宽度足够，视为横线（包括斜横线）
+        if (width > 25) mark('familiar_70');
       }
     } else {
-      // 低置信保洁：针对快速挥动手势增加特定形状保底
-      if (isClosed && width > 15 && height > 15) {
+      // 低置信保底
+      if (isClosed && width > 20 && height > 20) {
         mark('new');
-      } else if (width > 35 && height < width * 0.8) {
-        // 低置信：略斜横划仍可七分熟；要求终点上扬特征才认定全熟（防止横线误判）
-        const ySp = Math.abs(start.y - end.y);
-        const yTol = Math.max(20, width * 0.25, height * 0.9);
-        if (straightness > 0.72 && height < 60 && width > height * 1.3 && ySp < yTol) {
-          mark('familiar_70');
-        } else if (checkmarkMidDip > Math.max(8, height * 0.2) || straightness < 0.72) {
-          // 勾的「先下后上」特征或明显弯曲 = 全熟
-          mark('familiar_100');
-        }
-      } else if (height > 30 && width > 15 && checkmarkMidDip > Math.max(8, height * 0.2)) {
-        // 中段明显低于终点（勾形） = 全熟
+      } else if (hasCheckmarkValley && height > 15 && width > 15) {
         mark('familiar_100');
+      } else if (width > 35 && straightness > 0.75) {
+        mark('familiar_70');
       }
     }
   };
