@@ -74,7 +74,7 @@ function extractUsername(user: any): string {
 
 export async function register(username: string, password: string): Promise<AuthSession> {
   const email = toPseudoEmail(username);
-  
+
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
@@ -130,7 +130,7 @@ export async function register(username: string, password: string): Promise<Auth
 
 export async function login(username: string, password: string): Promise<AuthSession> {
   const email = toPseudoEmail(username);
-  
+
   const { data, error } = await supabase.auth.signInWithPassword({
     email,
     password,
@@ -149,7 +149,7 @@ export async function login(username: string, password: string): Promise<AuthSes
   // 获取该用户的授权激活状态
   let licenseActivated = false;
   let activatedWithCode: string | undefined = undefined;
-  
+
   const { data: profile, error: profileErr } = await supabase
     .from('profiles')
     .select('license_activated, activated_with_code')
@@ -170,7 +170,7 @@ export async function login(username: string, password: string): Promise<AuthSes
       activatedWithCode,
     }
   };
-  
+
   // 注册/检查设备限制
   const deviceId = getOrCreateDeviceId();
   const deviceName = getDeviceName();
@@ -246,7 +246,7 @@ export async function activateInviteOrRecover(session: AuthSession, code: string
 // ---------------------------------------------------------
 
 export async function saveCloudProgress(
-  token: string, 
+  token: string,
   payload: Record<string, string | null>,
   _options?: { isClosing?: boolean }
 ): Promise<boolean> {
@@ -276,7 +276,7 @@ export async function saveCloudProgress(
     void supabase.rpc('register_user_device', {
       p_device_id: deviceId,
       p_device_name: deviceName
-    }).catch(() => {});
+    }).catch(() => { });
 
     console.log('[Sync] 成功同步至本地服务器 (updated_at:', ts, ')');
     localStorage.setItem(LAST_SYNCED_TS_KEY, ts);
@@ -350,7 +350,7 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
       continue;
     }
 
-    const localVal = (k === 'vocab_focus_books' || k === 'vocab_custom_books') 
+    const localVal = (k === 'vocab_focus_books' || k === 'vocab_custom_books')
       ? null // IDB 托管的键，合并逻辑稍微不同：始终优先应用远程或合并。且我们不在此处读 IDB，只决定是否写。
       : localStorage.getItem(k);
 
@@ -367,7 +367,7 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
           if (k === 'vocab_focus_books' || k === 'vocab_custom_books') {
             const localArr = await getIdbItem<any[]>(k) || [];
             const merged = [...remoteArr];
-            
+
             // 深度合并逻辑：如果两边都有同一本书，合并其内部的单词状态
             if (Array.isArray(localArr)) {
               for (let i = 0; i < merged.length; i++) {
@@ -422,7 +422,7 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
                 });
                 stats.familiar_100 = totalMastered;
                 localStorage.setItem('vocab_stats', JSON.stringify(stats));
-              } catch {}
+              } catch { }
             }
 
             localStorage.removeItem(k);
@@ -455,23 +455,23 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
           }
         }
         if (localObj.history && remoteObj.history) {
-            merged.history = { ...localObj.history, ...remoteObj.history };
-            for (const dk in merged.history) {
-               if (localObj.history[dk] && remoteObj.history[dk]) {
-                  const lDay = localObj.history[dk];
-                  const rDay = remoteObj.history[dk];
-                  merged.history[dk] = { ...lDay, ...rDay };
-                  for (const sk in merged.history[dk]) {
-                      if (typeof lDay[sk] === 'number' && typeof rDay[sk] === 'number') {
-                          merged.history[dk][sk] = Math.max(lDay[sk], rDay[sk]);
-                      }
-                  }
-               }
+          merged.history = { ...localObj.history, ...remoteObj.history };
+          for (const dk in merged.history) {
+            if (localObj.history[dk] && remoteObj.history[dk]) {
+              const lDay = localObj.history[dk];
+              const rDay = remoteObj.history[dk];
+              merged.history[dk] = { ...lDay, ...rDay };
+              for (const sk in merged.history[dk]) {
+                if (typeof lDay[sk] === 'number' && typeof rDay[sk] === 'number') {
+                  merged.history[dk][sk] = Math.max(lDay[sk], rDay[sk]);
+                }
+              }
             }
+          }
         }
         localStorage.setItem(k, JSON.stringify(merged));
         continue;
-      } catch {}
+      } catch { }
     } else if (
       k === 'vocab_book_study_cursor' ||
       k === 'vocab_daily_challenge' ||
@@ -485,7 +485,7 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
         const merged = { ...localObj, ...remoteObj };
         localStorage.setItem(k, JSON.stringify(merged));
         continue;
-      } catch {}
+      } catch { }
     }
 
     localStorage.setItem(k, remoteVal);
