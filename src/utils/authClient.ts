@@ -374,20 +374,26 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
                 const rb = merged[i];
                 const lb = localArr.find((b: any) => b.id === rb.id);
                 if (lb && Array.isArray(lb.words) && Array.isArray(rb.words)) {
-                  // 合并单词状态：以 ID 为准，取更先进的状态
+                  // 合并单词状态：取两者中更先进的状态
                   const wordMap = new Map();
-                  // 先放本地的
+                  const getStatusWeight = (s: string) => {
+                    if (s === 'familiar_100' || s === 'mastered') return 3;
+                    if (s === 'familiar_70') return 2;
+                    if (s === 'reviewed') return 1;
+                    return 0;
+                  };
+
                   lb.words.forEach((w: any) => { if (w?.id) wordMap.set(w.id, w); });
-                  // 再放远程的（如果有冲突，此时简单的覆盖可能不够，但通常云端是权威）
-                  // 这里我们采取“并集”策略：如果本地有，云端也有，维持原样或合并属性
                   rb.words.forEach((rw: any) => {
                     if (!rw?.id) return;
                     const lw = wordMap.get(rw.id);
                     if (!lw) {
                       wordMap.set(rw.id, rw);
                     } else {
-                      // 简单的属性合并，确保 status 等关键信息取并集逻辑（简单起见，目前以更新时间或存在即视为同步）
-                      wordMap.set(rw.id, { ...lw, ...rw });
+                      // 比较状态权重
+                      const lWeight = getStatusWeight(lw.status || '');
+                      const rWeight = getStatusWeight(rw.status || '');
+                      wordMap.set(rw.id, rWeight >= lWeight ? { ...lw, ...rw } : { ...rw, ...lw });
                     }
                   });
                   merged[i] = { ...lb, ...rb, words: Array.from(wordMap.values()) };
@@ -396,7 +402,30 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
             }
 
             await setIdbItem(k, merged);
-            localStorage.removeItem(k); // 确保 localStorage 为空，保持 IDB 迁移态
+
+            // 【关键】合并完单词后，重新计算全局全熟词数，确保同步后百分比立即对齐
+            const statsRaw = localStorage.getItem('vocab_stats');
+            if (statsRaw) {
+              try {
+                const stats = JSON.parse(statsRaw);
+                let totalMastered = 0;
+                const seenWords = new Set();
+                merged.forEach((b: any) => {
+                  if (Array.isArray(b.words)) {
+                    b.words.forEach((w: any) => {
+                      if ((w.status === 'familiar_100' || w.status === 'mastered') && !seenWords.has(w.id)) {
+                        totalMastered++;
+                        seenWords.add(w.id);
+                      }
+                    });
+                  }
+                });
+                stats.familiar_100 = totalMastered;
+                localStorage.setItem('vocab_stats', JSON.stringify(stats));
+              } catch {}
+            }
+
+            localStorage.removeItem(k);
             continue;
           }
 
