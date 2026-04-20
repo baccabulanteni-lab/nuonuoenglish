@@ -580,7 +580,7 @@ export default function App() {
 
   const rolloverToastTimerRef = useRef<number | null>(null);
 
-  const runCalendarRollover = useCallback(() => {
+  const runCalendarRollover = useCallback(async () => {
     if (rolloverToastTimerRef.current != null) {
       window.clearTimeout(rolloverToastTimerRef.current);
       rolloverToastTimerRef.current = null;
