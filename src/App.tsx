@@ -63,6 +63,7 @@ import {
   type AuthSession,
 } from './utils/authClient';
 import VocabularyModule from './components/VocabularyModule';
+import { getIdbItem } from './utils/idbStorage';
 
 type Tab = 'home' | 'vocabulary' | 'review' | 'library' | 'stats';
 
@@ -141,17 +142,24 @@ export default function App() {
     authReadyRef.current = authReady;
   }, [authSession, authReady]);
 
-  const refreshStatesFromStorage = useCallback(() => {
-    // 强制重新从 localStorage 读取关键状态，确保云端同步后 UI 响应
+  const refreshStatesFromStorage = useCallback(async () => {
+    // 强制重新读取关键状态，确保云端同步后 UI 响应
     try {
       const daySaved = localStorage.getItem('vocab_current_day');
       const dayRaw = daySaved ? parseInt(daySaved, 10) : 1;
       const dayBase = Number.isFinite(dayRaw) && dayRaw >= 1 && dayRaw <= 5 ? dayRaw : 1;
       
-      const books = safeJsonParse<unknown[] | null>(
-        localStorage.getItem('vocab_focus_books'),
-        null
-      );
+      // 优先从 IndexedDB 读取词书，因为大数据会被迁移到那里
+      let books = await getIdbItem<unknown[]>('vocab_focus_books');
+      
+      // 如果 IDB 没有，再看旧的 localStorage
+      if (!books) {
+        books = safeJsonParse<unknown[] | null>(
+          localStorage.getItem('vocab_focus_books'),
+          null
+        );
+      }
+
       if (books && Array.isArray(books) && books[0] && typeof books[0] === 'object') {
         const b = books[0] as { title?: string, id?: string };
         const bookTitle = typeof b.title === 'string' ? b.title : '糯糯单词';
@@ -212,7 +220,7 @@ export default function App() {
               const finalSnap = await snapshotLocalProgressAsync();
               lastUploadedFingerprintRef.current = computeLocalVocabFingerprint(finalSnap);
               
-              refreshStatesFromStorage();
+              await refreshStatesFromStorage();
               dispatchVocabStatsUpdated();
               window.dispatchEvent(new Event(DAILY_CHALLENGE_EVENT));
               setSyncStatus('synced');
@@ -378,7 +386,7 @@ export default function App() {
           console.log('[Sync] 检测到云端有更新，正在同步...');
           await applyProgressToLocal(cloudRes.payload, cloudRes.updatedAt);
           
-          refreshStatesFromStorage();
+          await refreshStatesFromStorage();
           dispatchVocabStatsUpdated();
           window.dispatchEvent(new Event(DAILY_CHALLENGE_EVENT));
         }
@@ -570,7 +578,7 @@ export default function App() {
     const result = checkCalendarRollover(bookId);
     if (result.type === 'failure' && bookId) {
       applyDailyChallengeFailureReset(bookId);
-      refreshStatesFromStorage();
+      await refreshStatesFromStorage();
       setChallengeResetKey((k) => k + 1);
       setChallengeLetter({
         title: '闯关未达标',
@@ -588,6 +596,7 @@ export default function App() {
       applyNewDayAfterSuccess(bookId, next);
       setCurrentDay(next);
       localStorage.setItem('vocab_current_day', String(next));
+      await refreshStatesFromStorage();
       setChallengeLetter({
         title: '新自然日通知',
         body: `新自然日（北京时间）。昨日已完成计划，5 日循环已进入第 ${next} 天；词表仍从书中接续取词。第 1、3 天吃新词，第 2、4 天复习，第 5 天合卷且倒计时减半。`

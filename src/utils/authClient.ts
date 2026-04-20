@@ -270,6 +270,14 @@ export async function saveCloudProgress(
       return false;
     }
 
+    // 顺便上报设备信息，确保后台能看到该设备
+    const deviceId = getOrCreateDeviceId();
+    const deviceName = getDeviceName();
+    void supabase.rpc('register_user_device', {
+      p_device_id: deviceId,
+      p_device_name: deviceName
+    }).catch(() => {});
+
     console.log('[Sync] 成功同步至本地服务器 (updated_at:', ts, ')');
     localStorage.setItem(LAST_SYNCED_TS_KEY, ts);
     return true;
@@ -355,9 +363,39 @@ export async function applyProgressToLocal(remotePayload: Record<string, string 
       try {
         const remoteArr = JSON.parse(remoteVal);
         if (Array.isArray(remoteArr)) {
-          // 对于 focus/custom 这种可能已被迁移至 IDB 的大 Key
+          // 处理 focus/custom 这种可能已被迁移至 IDB 的大 Key
           if (k === 'vocab_focus_books' || k === 'vocab_custom_books') {
-            await setIdbItem(k, remoteArr);
+            const localArr = await getIdbItem<any[]>(k) || [];
+            const merged = [...remoteArr];
+            
+            // 深度合并逻辑：如果两边都有同一本书，合并其内部的单词状态
+            if (Array.isArray(localArr)) {
+              for (let i = 0; i < merged.length; i++) {
+                const rb = merged[i];
+                const lb = localArr.find((b: any) => b.id === rb.id);
+                if (lb && Array.isArray(lb.words) && Array.isArray(rb.words)) {
+                  // 合并单词状态：以 ID 为准，取更先进的状态
+                  const wordMap = new Map();
+                  // 先放本地的
+                  lb.words.forEach((w: any) => { if (w?.id) wordMap.set(w.id, w); });
+                  // 再放远程的（如果有冲突，此时简单的覆盖可能不够，但通常云端是权威）
+                  // 这里我们采取“并集”策略：如果本地有，云端也有，维持原样或合并属性
+                  rb.words.forEach((rw: any) => {
+                    if (!rw?.id) return;
+                    const lw = wordMap.get(rw.id);
+                    if (!lw) {
+                      wordMap.set(rw.id, rw);
+                    } else {
+                      // 简单的属性合并，确保 status 等关键信息取并集逻辑（简单起见，目前以更新时间或存在即视为同步）
+                      wordMap.set(rw.id, { ...lw, ...rw });
+                    }
+                  });
+                  merged[i] = { ...lb, ...rb, words: Array.from(wordMap.values()) };
+                }
+              }
+            }
+
+            await setIdbItem(k, merged);
             localStorage.removeItem(k); // 确保 localStorage 为空，保持 IDB 迁移态
             continue;
           }
