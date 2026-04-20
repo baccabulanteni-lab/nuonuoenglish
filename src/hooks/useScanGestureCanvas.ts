@@ -153,11 +153,10 @@ export function useScanGestureCanvas({
     const THRESHOLD = 0.65;
     const mark = (s: WordStatus) => onGestureMarkRef.current(s);
 
-    // 计算路径中点 y 坐标（用于判断勾形的「先下后上」特征）
-    const midPt = points.current[Math.floor(points.current.length / 2)];
-    const midY = midPt?.y ?? (minY + maxY) / 2;
-    // 勾的特征：路径中段比终点低（先折下再上扬）
-    const checkmarkMidDip = midY - end.y; // 正值 = 中段比终点低，勾形特征
+    // 勾的特征：路径中必然存在一个「最低点」（即 dip），且该点应明显低于（Y更大）终点
+    const dipY = Math.max(...ys);
+    // 勾形特征：最低点比终点低（上扬高度）
+    const checkmarkMidDip = dipY - end.y;
 
     if (result.score > THRESHOLD) {
       if (result.name === 'circle') {
@@ -230,7 +229,12 @@ export function useScanGestureCanvas({
 
     // 循环复习只写不识别：不记录点位，避免误触发分类与内存增长
     if (!isStatusDetermined && activeMode !== 'review') {
-      points.current.push({ x: cssX, y: cssY, timestamp: Date.now() });
+      const pts = points.current;
+      const last = pts[pts.length - 1];
+      // 增加距离阈值过滤，减少静止/堆积点对几何识别（如中点/重心计算）的干扰
+      if (!last || Math.hypot(last.x - cssX, last.y - cssY) > 0.5) {
+        pts.push({ x: cssX, y: cssY, timestamp: Date.now() });
+      }
     }
 
     const strokes = bitmapStrokesRef.current;
