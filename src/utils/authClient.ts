@@ -15,6 +15,27 @@ export interface AuthSession {
 export const AUTH_SESSION_STORAGE_KEY = 'nuonuo_auth_session_v1';
 const STORAGE_SESSION_KEY = AUTH_SESSION_STORAGE_KEY;
 export const LAST_SYNCED_TS_KEY = 'nuonuo_last_cloud_sync';
+export const DEVICE_ID_STORAGE_KEY = 'nuonuo_device_id_v1';
+
+function getOrCreateDeviceId(): string {
+  if (typeof localStorage === 'undefined') return 'unknown_device';
+  let id = localStorage.getItem(DEVICE_ID_STORAGE_KEY);
+  if (!id) {
+    id = crypto.randomUUID();
+    localStorage.setItem(DEVICE_ID_STORAGE_KEY, id);
+  }
+  return id;
+}
+
+function getDeviceName(): string {
+  if (typeof navigator === 'undefined') return 'Unknown';
+  const ua = navigator.userAgent;
+  if (ua.includes('Windows')) return 'Windows PC';
+  if (ua.includes('Macintosh')) return 'Mac';
+  if (ua.includes('iPhone')) return 'iPhone';
+  if (ua.includes('Android')) return 'Android Phone';
+  return 'Mobile/Web';
+}
 
 export function isInviteCodeRequired(): boolean {
   return import.meta.env.VITE_REQUIRE_INVITE_CODE !== 'false';
@@ -80,6 +101,25 @@ export async function register(username: string, password: string): Promise<Auth
         licenseActivated: false,
       }
     };
+
+    // 注册/检查设备限制
+    const deviceId = getOrCreateDeviceId();
+    const deviceName = getDeviceName();
+    const { data: deviceResult, error: deviceError } = await supabase.rpc('register_user_device', {
+      p_device_id: deviceId,
+      p_device_name: deviceName
+    });
+
+    if (deviceError || (deviceResult && !deviceResult.ok)) {
+      await supabase.auth.signOut();
+      localStorage.removeItem(STORAGE_SESSION_KEY);
+      const errCode = deviceResult?.error || deviceError?.message || '未知错误';
+      if (errCode === 'DEVICE_LIMIT_REACHED') {
+        throw new Error('登录失败：该账号已在 3 个设备上登录，请先在旧设备退出。');
+      }
+      throw new Error(`设备验证失败: ${errCode}`);
+    }
+
     saveSessionLocally(session);
     return session;
   }
@@ -131,6 +171,24 @@ export async function login(username: string, password: string): Promise<AuthSes
     }
   };
   
+  // 注册/检查设备限制
+  const deviceId = getOrCreateDeviceId();
+  const deviceName = getDeviceName();
+  const { data: deviceResult, error: deviceError } = await supabase.rpc('register_user_device', {
+    p_device_id: deviceId,
+    p_device_name: deviceName
+  });
+
+  if (deviceError || (deviceResult && !deviceResult.ok)) {
+    await supabase.auth.signOut();
+    localStorage.removeItem(STORAGE_SESSION_KEY);
+    const errCode = deviceResult?.error || deviceError?.message || '未知错误';
+    if (errCode === 'DEVICE_LIMIT_REACHED') {
+      throw new Error('登录失败：该账号已在 3 个设备上登录，请先在旧设备退出。');
+    }
+    throw new Error(`设备验证失败: ${errCode}`);
+  }
+
   saveSessionLocally(session);
   return session;
 }
